@@ -1,8 +1,6 @@
 ﻿  HSubject.cpp
-C:\Users\Yona et Audelia\Desktop\מכון\שנה ב\סמסטר א\מבנה נתונים ב\תרגילי ריצה\Targilim\DataStructure2\Exercise2\HSubject.cpp(130,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Yona et Audelia\Desktop\מכון\שנה ב\סמסטר א\מבנה נתונים ב\תרגילי ריצה\Targilim\DataStructure2\Exercise2\HSubject.cpp(132,35): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
-C:\Users\Yona et Audelia\Desktop\מכון\שנה ב\סמסטר א\מבנה נתונים ב\תרגילי ריצה\Targilim\DataStructure2\Exercise2\HSubject.cpp(140,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Yona et Audelia\Desktop\מכון\שנה ב\סמסטר א\מבנה נתונים ב\תרגילי ריצה\Targilim\DataStructure2\Exercise2\HSubject.cpp(142,35): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
-  Main.cpp
-  Generating Code...
+C:\Users\Yona et Audelia\Desktop\מכון\שנה ב\סמסטר א\מבנה נתונים ב\תרגילי ריצה\Targilim\DataStructure2\Exercise2\HSubject.cpp(133,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Yona et Audelia\Desktop\מכון\שנה ב\סמסטר א\מבנה נתונים ב\תרגילי ריצה\Targilim\DataStructure2\Exercise2\HSubject.cpp(135,35): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
+C:\Users\Yona et Audelia\Desktop\מכון\שנה ב\סמסטר א\מבנה נתונים ב\תרגילי ריצה\Targilim\DataStructure2\Exercise2\HSubject.cpp(143,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Yona et Audelia\Desktop\מכון\שנה ב\סמסטר א\מבנה נתונים ב\תרגילי ריצה\Targilim\DataStructure2\Exercise2\HSubject.cpp(145,35): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
   Exercise2.vcxproj -> C:\Users\Yona et Audelia\Desktop\מכון\שנה ב\סמסטר א\מבנה נתונים ב\תרגילי ריצה\Targilim\DataStructure2\Debug\Exercise2.exe

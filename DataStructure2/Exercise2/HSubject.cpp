@@ -16,16 +16,20 @@ void HSubject::PrintTitle(string title)
 	}
 }
 
-void HSubject::addSubjectAndTitle(string discussion, string title)
+void HSubject::addSubjectAndTitle(string title, string discussion)
 {
+	bool flag = false;
 	int i = 0;
-	for(int i =0 ; i < size ; i++)
+	for(; i < size ; i++)
 	{
-		if(myArray[i].key == title)
+		if (myArray[i].key == title)
+		{
+			flag = true;
 			break;
+		}	
 	}
 
-	if(i != 0)
+	if(flag)
 	{
 		myArray[i].data.push_front(discussion);
 	}
@@ -115,6 +119,7 @@ void HSubject::Print()
 	{
 		if (myArray[i].flag == FULL)
 		{
+			cout << myArray[i].key << ":";
 			for (list<string>::iterator it = myArray[i].data.begin(); it != myArray[i].data.end(); it++)
 			{
 				cout << (*it) << " ";
@@ -143,3 +148,4 @@ int HSubject::h2(string k)
 	}
 	return ((sum*15)%(size))+1;
 }
+
