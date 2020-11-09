@@ -1,4 +1,5 @@
 #include "HSubject.h"
+#include <cmath>
 #include <iostream>
 
 using namespace std;
@@ -8,11 +9,15 @@ void HSubject::PrintTitle(string title)
 	int index = Find(title);
 	if (index != -1)
 	{
-		for (list<string>::iterator it = myArray[index].data.begin(); it != myArray[index].data.end() ; it++)
+		for (list<string>::iterator it = myArray[index].data.begin(); it != myArray[index].data.end(); it++)
 		{
 			cout << (*it) << " ";
 		}
 		cout << endl;
+	}
+	else
+	{
+		cout << "ERROR";
 	}
 }
 
@@ -20,16 +25,16 @@ void HSubject::addSubjectAndTitle(string title, string discussion)
 {
 	bool flag = false;
 	int i = 0;
-	for(; i < size ; i++)
+	for (; i < size; i++)
 	{
 		if (myArray[i].key == title)
 		{
 			flag = true;
 			break;
-		}	
+		}
 	}
 
-	if(flag)
+	if (flag)
 	{
 		myArray[i].data.push_front(discussion);
 	}
@@ -50,67 +55,25 @@ void HSubject::PrintNDiscussion(string title, int n)
 	if (index != -1)
 	{
 		int i = 0;
-		for (list<string>::iterator it = myArray[index].data.begin(); (it != myArray[index].data.end()) && (i < n); it++ , i++)
+		for (list<string>::iterator it = myArray[index].data.begin(); (it != myArray[index].data.end()) && (i < n); it++, i++)
 		{
 			cout << (*it) << " ";
 		}
 		cout << endl;
 	}
+	else
+	{
+		cout << "ERROR";
+	}
 }
 
-void HSubject::startNewTable(int tmpSize)
+void HSubject::startNewTable()
 {
 	if (myArray)
 	{
 		delete[] myArray;
 	}
-	int i = tmpSize;
-	for (; i > 1; i--)
-	{
-		bool flag = true;
-		for (int j = 2; j < i; j++)
-		{
-			if ((i % j) == 0)
-			{
-				flag = false;
-				break;
-			}
-		}
-		if (flag == true)
-		{
-			break;
-		}
-	}
-	int count1 = tmpSize - i;
-	i = tmpSize;
-	while (true)
-	{
-		bool flag = true;
-		for (int j = 2; j < i; j++)
-		{
-			if ((i % j) == 0)
-			{
-				flag = false;
-				break;
-			}
-		}
-		if (flag == true)
-		{
-			break;
-		}
-		i++;
-	}
-	int count2 = i - tmpSize;
-	if (count2 > count1)
-	{
-		myArray = new Item<list<string>,string>[tmpSize - count1];
-		size = tmpSize - count1;
-	}
-	else
-	{
-		myArray = new Item<list<string>, string>[i];
-		size = i;
-	}
+	myArray = new Item<list<string>, string>[size];
 }
 
 void HSubject::Print()
@@ -131,21 +94,20 @@ void HSubject::Print()
 
 int HSubject::h1(string k)
 {
-	int sum = 0;
-	for (int i = 0; i < k.size() ; i++)
-	{
-		sum += ((int)k[i]) * pow(128, i);
-	}
-	return sum % size;
+	//int sum = 0;
+		//for (int i = 0; i < k.size() ; i++)
+		//{
+		//	sum += ((int)k[i]) * pow(128, i);
+		//}
+	return k[1] % size;
 }
 
 int HSubject::h2(string k)
 {
-	int sum = 0;
-	for (int i = 0; i < k.size(); i++)
-	{
-		sum += ((int)k[i]) * pow(128, i);
-	}
-	return ((sum*15)%(size))+1;
+	//int sum = 0;
+	//for (int i = 0; i < k.size() ; i++)
+	//{
+	//	sum += ((int)k[i]) * pow(128, i);
+	//}
+	return k[1] % size + 1;
 }
-

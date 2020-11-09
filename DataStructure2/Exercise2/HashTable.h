@@ -80,7 +80,7 @@ HashTable<T, K>::HashTable(int tmpSize)
 	int count2 = i - tmpSize;
 	if (count2 > count1)
 	{
-		myArray = new Item<T,K>[tmpSize - count1];
+		myArray = new Item<T, K>[tmpSize - count1];
 		size = tmpSize - count1;
 	}
 	else
@@ -92,7 +92,7 @@ HashTable<T, K>::HashTable(int tmpSize)
 }
 
 template <class T, class K>
-HashTable<T,K>::~HashTable()
+HashTable<T, K>::~HashTable()
 {
 	delete[] myArray;
 }
