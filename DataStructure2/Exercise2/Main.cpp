@@ -4,6 +4,10 @@
 
 using namespace std;
 
+/// <summary>
+/// main function
+/// </summary>
+/// <returns></returns>
 int main()
 {
 	char ch;

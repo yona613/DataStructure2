@@ -3,6 +3,9 @@
 #include <string>
 #include "HashTable.h"
 
+/// <summary>
+/// use HashTable and Initializing the func
+/// </summary>
 class HSubject : public HashTable<list<string>, string>
 {
 public:
