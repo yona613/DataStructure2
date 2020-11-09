@@ -1,4 +1,6 @@
 #pragma once
+#include <iostream>
+
 using namespace std;
 
 enum state { EMPTY, FULL, DELETED };
@@ -22,18 +24,18 @@ class HashTable
 public:
 	HashTable(int size = 0);
 	~HashTable();
-	virtual int h1(K k) = 0;
-	virtual int h2(K k) = 0;
-	int Hash(K k, int i);
 	int Find(K k);
 	bool Add(Item<T, K> tmpItem);
 	bool Delete(K k);
 	bool Update(Item<T, K> tmpItem);
-	void Print();
+	virtual void Print() = 0;
 
 protected:
 	Item<T, K>* myArray;
 	int size;
+	int Hash(K k, int i);
+	virtual int h1(K k) = 0;
+	virtual int h2(K k) = 0;
 };
 
 template<class T, class K>
@@ -178,14 +180,14 @@ bool HashTable<T, K>::Update(Item<T, K> tmpItem)
 /// </summary>
 /// <typeparam name="T">the data</typeparam>
 /// <typeparam name="K">the key</typeparam>
-template<class T, class K>
-void HashTable<T, K>::Print()
-{
-	for (int i = 0; i < size; i++)
-	{
-		if (myArray[i].flag == FULL)
-		{
-			cout << myArray[i].data << endl;
-		}
-	}
-}
+//template<class T, class K>
+//void HashTable<T, K>::Print()
+//{
+//	for (int i = 0; i < size; i++)
+//	{
+//		if (myArray[i].flag == FULL)
+//		{
+//			cout << myArray[i].data << endl;
+//		}
+//	}
+//}
