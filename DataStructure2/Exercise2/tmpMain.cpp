@@ -3,7 +3,7 @@
 #include <string>
 #include "HashInt.h"
 
-using namespace std;
+using namespace std; // hi!
 
 enum choice { ADD = 1, DELETE, FIND, EXIT = 0 };
 
