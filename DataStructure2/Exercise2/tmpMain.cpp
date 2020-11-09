@@ -3,7 +3,7 @@
 #include <string>
 #include "HashInt.h"
 
-using namespace std; // hi!
+using namespace std; // hi! yona
 
 enum choice { ADD = 1, DELETE, FIND, EXIT = 0 };
 
