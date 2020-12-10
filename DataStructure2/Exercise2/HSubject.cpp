@@ -132,7 +132,6 @@ int HSubject::h1(string k)
 /// </summary>
 /// <param name="k">the string</param>
 /// <returns>location</returns>
-int HSubject::h1(string k)
 int HSubject::h2(string k)
 {
 	//int sum = 0;
