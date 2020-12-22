@@ -1,11 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project>
-  <ProjectOutputs>
-    <ProjectOutput>
-      <FullPath>C:\Users\Yona et Audelia\Desktop\מכון\שנה ב\סמסטר א\מבנה נתונים ב\תרגילי ריצה\Targilim\DataStructure2\Debug\Exercise2.exe</FullPath>
-    </ProjectOutput>
-  </ProjectOutputs>
-  <ContentFiles />
-  <SatelliteDlls />
-  <NonRecipeFileRefs />
+  <ProjectOutputs>C:\Users\Yona et Audelia\Desktop\מכון\שנה ב\סמסטר א\מבנה נתונים ב\תרגילי ריצה\Targilim\DataStructure2\Debug\Exercise2.exe</ProjectOutputs>
+  <ContentFiles></ContentFiles>
+  <SatelliteDlls></SatelliteDlls>
+  <NonRecipeFileRefs></NonRecipeFileRefs>
 </Project>

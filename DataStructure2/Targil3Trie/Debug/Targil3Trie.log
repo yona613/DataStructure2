@@ -1,6 +1,0 @@
-﻿  MainTrie.cpp
-  Trie.cpp
-C:\Users\Yona et Audelia\Desktop\מכון\שנה ב\סמסטר א\מבנה נתונים ב\תרגילי ריצה\Targilim\DataStructure2\Targil3Trie\Trie.cpp(34,20): warning C4018: '<': signed/unsigned mismatch
-  Generating Code...
-C:\Users\Yona et Audelia\Desktop\מכון\שנה ב\סמסטר א\מבנה נתונים ב\תרגילי ריצה\Targilim\DataStructure2\Targil3Trie\Trie.cpp(200): warning C4715: 'Trie::delWord': not all control paths return a value
-  Targil3Trie.vcxproj -> C:\Users\Yona et Audelia\Desktop\מכון\שנה ב\סמסטר א\מבנה נתונים ב\תרגילי ריצה\Targilim\DataStructure2\Debug\Targil3Trie.exe
