@@ -33,6 +33,7 @@ public:
 
 	HNode();
 	HNode(string s, int n);
+
 };
 
 class compareNode
