@@ -27,11 +27,17 @@ void HuffmanTree::buildTree(int* frTable)
 	while (pQueue.size() > 1)
 	{
 		tmpNode = new HNode();
-		tmpNode->right = pQueue.top();
-		pQueue.pop();
 		tmpNode->left = pQueue.top();
 		pQueue.pop();
+		tmpNode->right = pQueue.top();
+		pQueue.pop();
 		tmpNode->frq = tmpNode->right->frq + tmpNode->left->frq;
+		if (tmpNode->right->frq == tmpNode->left->frq)
+		{
+			HNode* tmpPtr = tmpNode->right;
+			tmpNode->right = tmpNode->left;
+			tmpNode->left = tmpPtr;
+		}
 		pQueue.push(tmpNode);
 	}
 	root = pQueue.top();
@@ -40,7 +46,7 @@ void HuffmanTree::buildTree(int* frTable)
 
 int* HuffmanTree::buildTableOfFreq(string word)
 {
-	int* frArray = new int[256]{0};
+	int* frArray = new int[256]{ 0 };
 	for (int i = 0; i < word.length(); i++)
 	{
 		frArray[(int)word[i]]++;
@@ -55,7 +61,31 @@ void HuffmanTree::codeOfLetters(HNode* p, string partCode, string* table)
 
 string HuffmanTree::encode(string* table, string t)
 {
-	return string();
+	int* frTbl = buildTableOfFreq(t);
+	buildTree(frTbl);
+	buildTableCode(table);
+	string* code = new string;
+	encodeTree(code);
+	int numOfLetters = 0;
+	string coded = "";
+	for (int i = 0; i < 256; i++)
+	{
+		if (frTbl[i] != 0)
+		{
+			numOfLetters++;
+		}
+	}
+	coded.insert(0, 1, (char)(numOfLetters + 48));
+	coded.insert(1, 1, '\n');
+	coded += OrderOflettersinTree(root);
+	coded += '\n';
+	coded += *code;
+	coded += '\n';
+	for (int i = 0; i < t.length(); i++)
+	{
+		coded += table[(int)t[i]];
+	}
+	return coded;
 }
 
 string HuffmanTree::decode(HNode* p, string binaryCode, string partCode, int i)
@@ -65,23 +95,23 @@ string HuffmanTree::decode(HNode* p, string binaryCode, string partCode, int i)
 
 void HuffmanTree::encodeTree(string* code)
 {
-	*code = "";
-	endodeTreeRec(code, root);
+	*code += "";
+	encodeTreeRec(code, root);
 }
 
-void HuffmanTree::endodeTreeRec(string* code, HNode* root)
+void HuffmanTree::encodeTreeRec(string* code, HNode* root)
 {
-	if (root->left == NULL && root->right == NULL) 
+	if (root->left == NULL && root->right == NULL)
 	{
-		code += '1';
+		*code += '1';
 		return;
 	}
 	if (root->left != NULL)
 	{
-		code += '0';
-		endodeTreeRec(code, root->left);
+		*code += '0';
+		encodeTreeRec(code, root->left);
 	}
-	endodeTreeRec(code, root->right);
+	encodeTreeRec(code, root->right);
 }
 
 void HuffmanTree::buildTableCode(string* table)
@@ -114,4 +144,25 @@ void HuffmanTree::buildTableCodeRecur(string* table, HNode* root, string code)
 string HuffmanTree::decode(string binaryCode)
 {
 	return string();
+}
+
+//string HuffmanTree::OrderOflettersinTree()
+//{
+//	return OrderOflettersinTree(root);
+//}
+
+
+string HuffmanTree::OrderOflettersinTree(HNode* node)
+{
+	if (node->left == NULL && node->right == NULL)
+		return node->ltr;
+
+	string tmpString = "";
+
+	/* first recur on left child */
+	tmpString += OrderOflettersinTree(node->left);
+
+	tmpString += OrderOflettersinTree(node->right);
+
+	return tmpString;
 }

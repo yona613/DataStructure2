@@ -10,7 +10,8 @@ int main()
 {
 	int choice;
 	string word;
-
+	string codedWord;
+	string* table = new string[256];
 	HuffmanTree* t = new HuffmanTree();
 	cout << "enter 1 to encode a text\n";
 	cout << "enter 2 to decode a text\n";
@@ -25,11 +26,11 @@ int main()
 
 			cout << "enter the original text" << endl;
 			cin >> word;
-
+			codedWord = t->encode(table, word);
 			//Build Huffman tree given the data inside "word".
 			//Then find the code of each letter.
 			//Then print the output - number of leaves, order of letters, tree structure and the encoded text - according to the explanation in the exercise.
-
+			cout << codedWord << endl;
 			break;
 		case 2:
 			//input the number of leaves, the  order of letters, tree structure and the encoded text.

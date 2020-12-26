@@ -58,10 +58,11 @@ public:
 
 	string decode(HNode *p, string binaryCode, string partCode, int i);
 	void encodeTree(string* code);
-	void endodeTreeRec(string* code, HNode* root);
+	void encodeTreeRec(string* code, HNode* root);
 	void buildTableCode(string *table);
 	void buildTableCodeRecur(string* table, HNode* root, string code);
 	string decode(string binaryCode);
+	string OrderOflettersinTree(HNode* node);
 	
 	
 	//void printToFile(ofstream& of, string binaryCode);  //print tree to file
