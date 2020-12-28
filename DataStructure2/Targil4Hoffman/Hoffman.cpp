@@ -2,15 +2,8 @@
 #include <vector>
 #include <queue>
 
-HNode::HNode()
-{
-}
 
-HNode::HNode(string s, int n)
-{
-}
-
-void HuffmanTree::buildTree(int* frTable)
+void HuffmanTree::buildTreeFromLetters(int* frTable)
 {
 	HNode* tmpNode;
 	priority_queue<HNode*, vector<HNode*>, compareNode> pQueue;
@@ -44,6 +37,34 @@ void HuffmanTree::buildTree(int* frTable)
 	pQueue.pop();
 }
 
+void HuffmanTree::builTreeFromCode(string code, string letters)
+{
+	root = new HNode();
+	builTreeFromCodeRec(code, letters, root);
+}
+
+void HuffmanTree::builTreeFromCodeRec(string &code, string &letters, HNode* root)
+{
+	if (code.empty())
+		return;
+	if (code[0] == '1') 
+	{
+		root->ltr = letters[0];
+		letters = letters.substr(1, letters.size() - 1);
+		code = code.substr(1, code.size() - 1);
+		return;
+	}
+	if (code[0])
+	{
+		root->left = new HNode();
+		root->right = new HNode();
+		code = code.substr(1, code.size() - 1);
+		builTreeFromCodeRec(code, letters, root->left);
+		builTreeFromCodeRec(code, letters, root->right);
+	}
+		
+}
+
 int* HuffmanTree::buildTableOfFreq(string word)
 {
 	int* frArray = new int[256]{ 0 };
@@ -54,15 +75,10 @@ int* HuffmanTree::buildTableOfFreq(string word)
 	return frArray;
 }
 
-void HuffmanTree::codeOfLetters(HNode* p, string partCode, string* table)
-{
-
-}
-
 string HuffmanTree::encode(string* table, string t)
 {
 	int* frTbl = buildTableOfFreq(t);
-	buildTree(frTbl);
+	buildTreeFromLetters(frTbl);
 	buildTableCode(table);
 	string* code = new string;
 	encodeTree(code);
@@ -85,12 +101,40 @@ string HuffmanTree::encode(string* table, string t)
 	{
 		coded += table[(int)t[i]];
 	}
+	delete[] frTbl;
+	delete code;
 	return coded;
 }
 
-string HuffmanTree::decode(HNode* p, string binaryCode, string partCode, int i)
+string HuffmanTree::decode(int frq , string letters, string treeCode, string encodedText)
 {
-	return string();
+	string* table = new string[256];
+	builTreeFromCode(treeCode, letters);
+	buildTableCode(table);
+	string decodeText = "";
+	int i = 0;
+	bool found = false;
+	while (!encodedText.empty() && i <= encodedText.size())
+	{
+		for (int j = 0; j < 256; j++)
+		{
+			if (encodedText.substr(0, i) == table[j] && table[j] != "")
+			{
+				decodeText += (char)j;
+				encodedText = encodedText.substr(i, encodedText.size() - 1);
+				found = true;
+				break;
+			}
+		}
+		if (found)
+		{
+			i = 0;
+			found = false;
+		}
+		else i++;
+	}
+	delete[] table;
+	return decodeText;
 }
 
 void HuffmanTree::encodeTree(string* code)
@@ -141,10 +185,10 @@ void HuffmanTree::buildTableCodeRecur(string* table, HNode* root, string code)
 }
 
 
-string HuffmanTree::decode(string binaryCode)
+/*string HuffmanTree::decode(string binaryCode)
 {
 	return string();
-}
+}*/
 
 //string HuffmanTree::OrderOflettersinTree()
 //{
@@ -165,4 +209,17 @@ string HuffmanTree::OrderOflettersinTree(HNode* node)
 	tmpString += OrderOflettersinTree(node->right);
 
 	return tmpString;
+}
+
+HuffmanTree::~HuffmanTree()
+{
+	delete root;
+}
+
+HNode::~HNode()
+{
+	if (this->left != NULL)
+		delete this->left;
+	if (this->right != NULL)
+		delete this->right;
 }

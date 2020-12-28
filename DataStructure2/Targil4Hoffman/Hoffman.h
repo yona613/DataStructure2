@@ -31,8 +31,7 @@ public:
 	HNode* left;
 	HNode* right;
 
-	HNode();
-	HNode(string s, int n);
+	~HNode();
 };
 
 class compareNode
@@ -50,18 +49,19 @@ class HuffmanTree
 	HNode* root;
 public:
 	//string text;
-	void buildTree(int* frTable);
+	void buildTreeFromLetters(int* frTable);
+	void builTreeFromCode(string code, string letters);
+	void builTreeFromCodeRec(string& code, string& letters, HNode* root);
 	int* buildTableOfFreq(string word);
 
-	void codeOfLetters(HNode* p, string partCode, string *table);
 	string encode(string*table, string t);
 
-	string decode(HNode *p, string binaryCode, string partCode, int i);
+	string decode(int frq, string letters, string treeCode, string encodedText);
 	void encodeTree(string* code);
 	void encodeTreeRec(string* code, HNode* root);
 	void buildTableCode(string *table);
 	void buildTableCodeRecur(string* table, HNode* root, string code);
-	string decode(string binaryCode);
+	//string decode(string binaryCode);
 	string OrderOflettersinTree(HNode* node);
 	
 	
@@ -69,4 +69,5 @@ public:
 	//void readFromFile(ifstream& ifs, string &binaryCode); //read tree from file
 	//void printToFileRec(ofstream& of, HNode *p); //print tree to file
 	//void readFromFileRec(ifstream& ifs, HNode *&p, string str, string letters, int &currS, int& currL); //read tree from file
+	~HuffmanTree();
 };
