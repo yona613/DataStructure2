@@ -54,7 +54,7 @@ public:
 	void builTreeFromCodeRec(string& code, string& letters, HNode* root);
 	int* buildTableOfFreq(string word);
 
-	string encode(string*table, string t);
+	string encode(string*table, string t, int &numOfLetters);
 
 	string decode(int frq, string letters, string treeCode, string encodedText);
 	void encodeTree(string* code);

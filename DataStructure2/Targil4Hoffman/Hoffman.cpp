@@ -25,12 +25,12 @@ void HuffmanTree::buildTreeFromLetters(int* frTable)
 		tmpNode->right = pQueue.top();
 		pQueue.pop();
 		tmpNode->frq = tmpNode->right->frq + tmpNode->left->frq;
-		if (tmpNode->right->frq == tmpNode->left->frq)
-		{
-			HNode* tmpPtr = tmpNode->right;
-			tmpNode->right = tmpNode->left;
-			tmpNode->left = tmpPtr;
-		}
+		//if (tmpNode->right->frq == tmpNode->left->frq)
+		//{
+		//	HNode* tmpPtr = tmpNode->right;
+		//	tmpNode->right = tmpNode->left;
+		//	tmpNode->left = tmpPtr;
+		//}
 		pQueue.push(tmpNode);
 	}
 	root = pQueue.top();
@@ -43,11 +43,11 @@ void HuffmanTree::builTreeFromCode(string code, string letters)
 	builTreeFromCodeRec(code, letters, root);
 }
 
-void HuffmanTree::builTreeFromCodeRec(string &code, string &letters, HNode* root)
+void HuffmanTree::builTreeFromCodeRec(string& code, string& letters, HNode* root)
 {
 	if (code.empty())
 		return;
-	if (code[0] == '1') 
+	if (code[0] == '1')
 	{
 		root->ltr = letters[0];
 		letters = letters.substr(1, letters.size() - 1);
@@ -62,7 +62,7 @@ void HuffmanTree::builTreeFromCodeRec(string &code, string &letters, HNode* root
 		builTreeFromCodeRec(code, letters, root->left);
 		builTreeFromCodeRec(code, letters, root->right);
 	}
-		
+
 }
 
 int* HuffmanTree::buildTableOfFreq(string word)
@@ -75,14 +75,14 @@ int* HuffmanTree::buildTableOfFreq(string word)
 	return frArray;
 }
 
-string HuffmanTree::encode(string* table, string t)
+string HuffmanTree::encode(string* table, string t, int& numOfLetters)
 {
 	int* frTbl = buildTableOfFreq(t);
 	buildTreeFromLetters(frTbl);
 	buildTableCode(table);
 	string* code = new string;
 	encodeTree(code);
-	int numOfLetters = 0;
+	numOfLetters = 0;
 	string coded = "";
 	for (int i = 0; i < 256; i++)
 	{
@@ -91,8 +91,8 @@ string HuffmanTree::encode(string* table, string t)
 			numOfLetters++;
 		}
 	}
-	coded.insert(0, 1, (char)(numOfLetters + 48));
-	coded.insert(1, 1, '\n');
+	//coded.insert(0, 1, (char)(numOfLetters + 48));
+	//coded.insert(1, 1, '\n');
 	coded += OrderOflettersinTree(root);
 	coded += '\n';
 	coded += *code;
@@ -106,7 +106,7 @@ string HuffmanTree::encode(string* table, string t)
 	return coded;
 }
 
-string HuffmanTree::decode(int frq , string letters, string treeCode, string encodedText)
+string HuffmanTree::decode(int frq, string letters, string treeCode, string encodedText)
 {
 	string* table = new string[256];
 	builTreeFromCode(treeCode, letters);
